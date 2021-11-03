@@ -107,6 +107,10 @@ function fitModel(model::Model, u, y, opt::Options = Options())
     priors = get_parameters.([m.pm, m.rm])
     (length(priors) == 0) && error("No parameters to estimate!")
     chn = sample(post(u, y, m, priors), NUTS(), opt.niter)
+    # return model with posterior distributions
+    # as elements for some parameters
+    ll = pointwise_ll(chn, u, y, m, priors)
+    loo = PSIS.psisloo(ll)
     # construct approximate posterior
     for (j,th) in enumerate(chn.name_map.parameters)
         c = chn[th].data
@@ -119,10 +123,6 @@ function fitModel(model::Model, u, y, opt::Options = Options())
             set_parameter!(m, p[1] => approx_post)
         end
     end
-    # return model with posterior distributions
-    # as elements for some parameters
-    ll = pointwise_ll(chn, u, y, m, priors)
-    loo = PSIS.psisloo(ll)
     return m, [maximum(ll), loo], chn
 end
 
