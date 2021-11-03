@@ -47,6 +47,18 @@ struct Model
     pm::PerceptualModel
     rm::ResponseModel
 end
+function Base.iterate(m::Model, state = 1)
+    fs1 = fieldnames(typeof(m.pm))
+    fs2 = fieldnames(typeof(m.rm))
+    fs = vcat(fs1..., fs2...)
+    if state > length(fs)
+        return nothing
+    elseif state <= length(fs1)
+        return ((fs[state], getfield(m.pm, fs[state])), state+1)
+    else
+        return ((fs[state], getfield(m.rm, fs[state])), state+1)
+    end
+end
 
 function draw(m::Model)
     Model(typeof(m.pm)(draw(m.pm)...),

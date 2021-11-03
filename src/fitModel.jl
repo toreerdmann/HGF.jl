@@ -1,7 +1,7 @@
 
 
 
-function get_parameters(m)
+function get_parameters(m::Union{PerceptualModel, ResponseModel})
     θ = [m...]
     ps = []
     for (nm, val) in zip(fieldnames(typeof(m)), θ)
@@ -17,6 +17,8 @@ function get_parameters(m)
     end
     return ps
 end
+
+get_parameters(m::Model) = filter(x -> x[2] isa Sampleable, [m...])
 
 function set_parameter!(m::Model, p::Pair)
     k, v = p
