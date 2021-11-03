@@ -27,22 +27,26 @@ function (m::SoftmaxBinary)(traj::Trajectory)
     # simulate responses y
     #
     β = m.β
-    #@assert β > 0
-    states = traj.muhat[:, 1]
-    prob = 1 ./ (1 .+ exp.(-β * (2 * states .- 1)))
-    [rand(Bernoulli(p)) + 0 for p in prob]
+    β = m.β
+    y = []
+    for t in trials
+        p = traj.muhat[t,1]
+        pt = exp(β * p .- logsumexp(β .* [p, 1-p]))
+        push!(y, Bernoulli(pt))
+    end
+    y
 end
 function (m::SoftmaxBinary)(traj::Trajectory, y)
     #
     # evaluate likelihood of responses y
     #
     β = m.β
-    #@assert β > 0
-    x = traj.muhat[:, 1]
-    ##
-    ## TODO: handle/skip missing/NaN values
-    ##
-    prob_c = 1 ./ (1 .+ exp.(-β * (2 * x .- 1) .* (2 * y .- 1)))
-    logprob = log.(prob_c)
+    logprob = 0
+    trials = setdiff(1:length(y), findall(isnan.(y)))
+    for t in trials
+        p = traj.muhat[t,1]
+        pt = exp(β * p .- logsumexp(β .* [p, 1-p]))
+        logprob += logpdf(Bernoulli(pt), y[t])
+    end
     sum(logprob)
 end
