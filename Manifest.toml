@@ -60,9 +60,9 @@ version = "2.1.0"
 
 [[ArrayInterface]]
 deps = ["Compat", "IfElse", "LinearAlgebra", "Requires", "SparseArrays", "Static"]
-git-tree-sha1 = "426050a30c2cda1969510e92d5c5b52735f41c7d"
+git-tree-sha1 = "e527b258413e0c6d4f66ade574744c94edef81f8"
 uuid = "4fba245c-0d91-5ea0-9b3e-6abc04ee57a9"
-version = "3.1.39"
+version = "3.1.40"
 
 [[Artifacts]]
 deps = ["Pkg"]
@@ -200,10 +200,10 @@ uuid = "163ba53b-c6d8-5494-b064-1a9d43ac40c5"
 version = "1.0.3"
 
 [[DiffRules]]
-deps = ["NaNMath", "Random", "SpecialFunctions"]
-git-tree-sha1 = "7220bc21c33e990c14f4a9a319b1d242ebc5b269"
+deps = ["LogExpFunctions", "NaNMath", "Random", "SpecialFunctions"]
+git-tree-sha1 = "3287dacf67c3652d3fed09f4c12c187ae4dbb89a"
 uuid = "b552c78f-8df3-52c6-915a-8e097449b14b"
-version = "1.3.1"
+version = "1.4.0"
 
 [[Distributed]]
 deps = ["Random", "Serialization", "Sockets"]
@@ -211,9 +211,9 @@ uuid = "8ba89e20-285c-5b6f-9357-94700520ee1b"
 
 [[Distributions]]
 deps = ["ChainRulesCore", "FillArrays", "LinearAlgebra", "PDMats", "Printf", "QuadGK", "Random", "SparseArrays", "SpecialFunctions", "Statistics", "StatsBase", "StatsFuns"]
-git-tree-sha1 = "d249ebaa67716b39f91cf6052daf073634013c0f"
+git-tree-sha1 = "72dcda9e19f88d09bf21b5f9507a0bb430bce2aa"
 uuid = "31c24e10-a181-5473-b8eb-7969acd0382f"
-version = "0.25.23"
+version = "0.25.24"
 
 [[DistributionsAD]]
 deps = ["Adapt", "ChainRules", "ChainRulesCore", "Compat", "DiffRules", "Distributions", "FillArrays", "LinearAlgebra", "NaNMath", "PDMats", "Random", "Requires", "SpecialFunctions", "StaticArrays", "StatsBase", "StatsFuns", "ZygoteRules"]
@@ -235,9 +235,9 @@ version = "0.15.1"
 
 [[EllipsisNotation]]
 deps = ["ArrayInterface"]
-git-tree-sha1 = "8041575f021cba5a099a456b4163c9a08b566a02"
+git-tree-sha1 = "9aad812fb7c4c038da7cab5a069f502e6e3ae030"
 uuid = "da5c29d0-fa7d-589e-88eb-ea29b0a81949"
-version = "1.1.0"
+version = "1.1.1"
 
 [[EllipticalSliceSampling]]
 deps = ["AbstractMCMC", "ArrayInterface", "Distributions", "Random", "Statistics"]
@@ -511,9 +511,9 @@ version = "1.4.1"
 
 [[PDMats]]
 deps = ["LinearAlgebra", "SparseArrays", "SuiteSparse"]
-git-tree-sha1 = "82041e63725d156bf61c6302dd7635ea13e3d5e7"
+git-tree-sha1 = "c8b8775b2f242c80ea85c83714c64ecfa3c53355"
 uuid = "90014a1f-27ba-587c-ab20-58faa44d9150"
-version = "0.11.2"
+version = "0.11.3"
 
 [[Pkg]]
 deps = ["Dates", "LibGit2", "Libdl", "Logging", "Markdown", "Printf", "REPL", "Random", "SHA", "UUIDs"]
@@ -614,9 +614,9 @@ version = "0.2.2+2"
 
 [[Roots]]
 deps = ["CommonSolve", "Printf", "Setfield"]
-git-tree-sha1 = "6f17bbb331a75823067a2d6fb182f95048397b3d"
+git-tree-sha1 = "f7ac5ddfba4234908564227ccdab87f50d1c578f"
 uuid = "f2b01f46-fcfa-551c-844a-d8ac1e96c665"
-version = "1.3.5"
+version = "1.3.6"
 
 [[SHA]]
 uuid = "ea8e919c-243c-51af-8825-aaa63cd721ce"
@@ -644,6 +644,12 @@ version = "0.8.0"
 [[SharedArrays]]
 deps = ["Distributed", "Mmap", "Random", "Serialization"]
 uuid = "1a1011a3-84de-559e-8e89-a11a2f7dc383"
+
+[[Sobol]]
+deps = ["DelimitedFiles", "Random"]
+git-tree-sha1 = "5a74ac22a9daef23705f010f72c81d6925b19df8"
+uuid = "ed01d8cd-4d21-5b2a-85b4-cc3bdc58bad4"
+version = "1.5.0"
 
 [[Sockets]]
 uuid = "6462fe0b-24de-5631-8697-dd941f90decc"

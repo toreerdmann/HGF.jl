@@ -87,5 +87,6 @@ end
 
 Base.@kwdef struct Options
     niter = 10
+    sample = true
 end
 

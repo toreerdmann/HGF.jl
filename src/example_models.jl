@@ -27,12 +27,12 @@ function (m::SoftmaxBinary)(traj::Trajectory)
     # simulate responses y
     #
     β = m.β
-    β = m.β
     y = []
+    trials = 1:size(traj.muhat, 1)
     for t in trials
         p = traj.muhat[t,1]
         pt = exp(β * p .- logsumexp(β .* [p, 1-p]))
-        push!(y, Bernoulli(pt))
+        push!(y, rand(Bernoulli(pt)))
     end
     y
 end
