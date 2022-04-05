@@ -19,6 +19,8 @@ You can install the package with the following command (from the julia REPL):
 
 ```julia
 using HGF
+using Distributions: Normal, Exponential
+using Plots
 
 # draw design
 ps = repeat([.2, .8, .2], inner = 50)
@@ -46,6 +48,11 @@ ysim = [m(u) for m in subs]
 # fit data
 fits = [fitModel(m, u, ysim[i], 
                  Options(niter = 100))[1] for i in 1:nsubs]
+
+# look at simulated parameter vs. estimates 
+omtrue = [sub.pm.om[2] for sub in subs]
+omest  = [fit.pm.om[2] for fit in fits]
+scatter(omest, omtrue)
 
 ```
 
