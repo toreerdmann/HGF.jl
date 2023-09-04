@@ -154,7 +154,7 @@ function fitModel(model::Model, u, y, opt::Options = Options())
     m = deepcopy(model)
     # get non-fixed parameters
     priors = get_parameters.([m.pm, m.rm])
-    (length(priors) == 0) && error("No parameters to estimate!")
+    (all(length.(priors) .== 0)) && error("No parameters to estimate!")
     if opt.sample
         # use sampling
         chn = sample(post(u, y, m, priors), NUTS(), opt.niter)

@@ -2,7 +2,7 @@ module HGF
 
 using Distributions: Sampleable, Normal, Bernoulli, Exponential, truncated
 using Turing
-using StatsFuns: logistic, logsumexp
+using LogExpFunctions: logistic, logsumexp
 
 include("core.jl")
 export Options, Model, Trajectory, make_models
